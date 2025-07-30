@@ -1,0 +1,9 @@
+.card {
+  border: 1px solid #280F37;
+  margin: 1.5rem 0;
+  padding: 2rem 1.5rem;
+}
+
+.card ul {
+  margin: 16px;
+}

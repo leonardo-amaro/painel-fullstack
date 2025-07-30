@@ -1,0 +1,32 @@
+{
+  "name": "nslookup-api",
+  "version": "1.0.0",
+  "description": "API para consultas e análises de registros DNS de domínios.",
+  "main": "src/server.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "ts-node-dev --respawn src/server.ts"
+  },
+  "keywords": [
+    "api",
+    "node",
+    "typescript",
+    "express"
+  ],
+  "author": "Leonardo Silva",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "whois": "^2.14.2",
+    "whois-json": "^2.0.4"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
+    "@types/node": "^22.15.30",
+    "@types/whois-json": "^2.0.4",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.8.3"
+  }
+}
