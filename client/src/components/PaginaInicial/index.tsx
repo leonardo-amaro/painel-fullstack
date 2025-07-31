@@ -8,14 +8,24 @@ const PaginaInicial = () => {
   const [dominio, setDominio] = useState('');
   const [dns, setDns] = useState<any>(null);
   const [whois, setWhois] = useState<any>(null);
+  const [loading, setLoading] = useState(false);
 
   const aoClicar = async () => {
-    let dnsResultado = await dnsLookup(dominio);
-    let whoisResultado = await whoisLookup(dominio);
-    setDns(dnsResultado);
-    setWhois(whoisResultado);
-    console.log(dnsResultado);
-    console.log(whoisResultado);
+    if (!dominio.trim()) return;
+
+    setLoading(true);
+    try {
+      let dnsResultado = await dnsLookup(dominio);
+      let whoisResultado = await whoisLookup(dominio);
+      setDns(dnsResultado);
+      setWhois(whoisResultado);
+      console.log(dnsResultado);
+      console.log(whoisResultado);
+    } catch (err) {
+      console.log("Erro na consulta. Verifique o domínio e tente novamente. Detalhes: ", err);
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -27,9 +37,13 @@ const PaginaInicial = () => {
         type="text"
         value={dominio}
         onChange={(e) => setDominio(e.target.value)}
+        disabled={loading}
       />
-      <button onClick={aoClicar}>
-        Verificar
+      <button
+        onClick={aoClicar}
+        disabled={loading}
+      >
+        {loading ? "Verificando..." : "Verificar"}
       </button>
       <Card tipo="dns" titulo="NsLookup" dados={dns} />
       <Card tipo="whois" titulo="Whois" dados={whois} />

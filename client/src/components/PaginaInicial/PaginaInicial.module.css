@@ -22,3 +22,8 @@
   padding: 6px;
   cursor: pointer;
 }
+
+.principal button:disabled {
+  background-color: #a1a1a1;
+  cursor: not-allowed;
+}
