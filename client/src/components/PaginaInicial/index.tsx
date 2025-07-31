@@ -11,12 +11,12 @@ const PaginaInicial = () => {
   const [loading, setLoading] = useState(false);
 
   const aoClicar = async () => {
-    if (!dominio.trim()) return;
+    if (!dominio.trim() || !dominio.includes(".")) return alert("Por favor, digite um domínio válido");
 
     setLoading(true);
     try {
-      let dnsResultado = await dnsLookup(dominio);
-      let whoisResultado = await whoisLookup(dominio);
+      let dnsResultado = await dnsLookup(dominio.trim());
+      let whoisResultado = await whoisLookup(dominio.trim());
       setDns(dnsResultado);
       setWhois(whoisResultado);
       console.log(dnsResultado);
